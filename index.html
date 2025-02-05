@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Downloader</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Video Downloader</h1>
-        <form id="downloadForm">
-            <input type="text" id="videoURL" placeholder="Enter video URL" required>
-            <button type="submit">Download</button>
+    <div class="container mt-5">
+        <h1 class="text-center">Video Downloader</h1>
+        <form id="downloadForm" class="mt-4">
+            <div class="form-group">
+                <input type="text" id="videoURL" class="form-control" placeholder="Enter video URL" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Download</button>
         </form>
-        <div id="message"></div>
+        <div id="message" class="mt-3"></div>
     </div>
     <script src="script.js"></script>
 </body>
