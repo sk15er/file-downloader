@@ -5,13 +5,13 @@ document.getElementById('downloadForm').addEventListener('submit', function(even
     const messageDiv = document.getElementById('message');
 
     if (videoURL) {
-        fetch(videoURL)
+        const proxyUrl = `http://localhost:3000/download?url=${encodeURIComponent(videoURL)}`;
+        fetch(proxyUrl)
             .then(response => {
-                if (response.ok) {
-                    return response.blob();
-                } else {
-                    throw new Error('Network response was not ok.');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.blob();
             })
             .then(blob => {
                 const url = window.URL.createObjectURL(blob);
@@ -27,8 +27,10 @@ document.getElementById('downloadForm').addEventListener('submit', function(even
             })
             .catch(error => {
                 messageDiv.textContent = 'Failed to download the video. Please check the URL.';
+                messageDiv.style.color = 'red';
             });
     } else {
         messageDiv.textContent = 'Please enter a valid URL.';
+        messageDiv.style.color = 'red';
     }
 });
